@@ -1,0 +1,30 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.7
+  Exclude:
+    - node_modules/**/*
+    - vendor/**/*
+
+Layout/LineLength:
+  Max: 120
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+Rails:
+  Enabled: true
+Style/AndOr:
+  EnforcedStyle: conditionals
+Style/AsciiComments:
+  Enabled: false
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+Style/Documentation:
+  Enabled: false
+Style/Lambda:
+  EnforcedStyle: literal
+Style/StringLiterals:
+  Exclude:
+    - 'db/migrate/**/*'
