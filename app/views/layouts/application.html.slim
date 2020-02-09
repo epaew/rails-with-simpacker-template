@@ -1,0 +1,13 @@
+doctype html
+html[lang="ja"]
+  head
+    meta[charset="UTF-8"]
+    title RailsWithSimpackerTemplate
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_packs_with_chunks_tag 'application'
+    = javascript_packs_with_chunks_tag 'application', entrypoint_name(controller)
+
+  body
+    = yield
