@@ -1,0 +1,25 @@
+env:
+  browser: true
+  es6: true
+extends:
+  - 'eslint:recommended'
+  - 'plugin:react/recommended'
+  - 'plugin:@typescript-eslint/eslint-recommended'
+  - 'plugin:@typescript-eslint/recommended'
+  - 'plugin:prettier/recommended'
+  - 'prettier/@typescript-eslint'
+parser: '@typescript-eslint/parser'
+parserOptions:
+  sourceType: module
+plugins:
+  - '@typescript-eslint'
+rules:
+  '@typescript-eslint/ban-ts-ignore': off
+  '@typescript-eslint/explicit-function-return-type': off
+overrides:
+  - files:
+      - "app/javascript/**/*.tsx"
+    plugins:
+      - react
+    rules:
+      react/prop-types: off
