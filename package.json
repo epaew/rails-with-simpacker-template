@@ -5,6 +5,7 @@
     "build": "webpack --config config/webpack/production.js",
     "clean": "rm -rf public/packs/*",
     "start": "webpack-dev-server --config config/webpack/development.js",
+    "test": "jest",
     "eslint": "eslint -c .eslintrc.yml --ext .js,.jsx,.ts,.tsx app/javascript",
     "eslint:fix": "eslint --fix -c .eslintrc.yml --ext .js,.jsx,.ts,.tsx app/javascript",
     "stylelint": "stylelint --config .stylelintrc.yml \"app/javascript/**/*.{s,}css\"",
