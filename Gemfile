@@ -11,6 +11,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0'
+gem 'rails-i18n'
 # gem 'redis', '~> 4.0'
 gem 'simpacker'
 gem 'slim-rails'
@@ -18,6 +19,7 @@ gem 'slim-rails'
 group :development, :test do
   gem 'bullet'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
   gem 'pry'
   gem 'pry-byebug'
   gem 'pry-rails'
@@ -34,4 +36,13 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'rspec-rails'
+  gem 'selenium-webdriver'
+  gem 'simplecov', require: false
+  gem 'webdrivers'
+  gem 'webmock', require: false
 end
