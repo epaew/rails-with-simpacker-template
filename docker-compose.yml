@@ -12,7 +12,7 @@ services:
       - "3000:3000"
     command: bundle exec spring server
     volumes:
-      - .:/app
+      - .:/app:cached
     depends_on:
       - db
       - webpack
@@ -25,7 +25,7 @@ services:
       - "3035:3035"
     command: yarn run start
     volumes:
-      - .:/app
+      - .:/app:cached
       - node_modules:/app/node_modules
   db:
     image: postgres:12
