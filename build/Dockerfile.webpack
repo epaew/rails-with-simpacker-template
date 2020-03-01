@@ -1,8 +1,7 @@
 # vim:set ft=dockerfile:
 
-FROM node:12 as webpack
+FROM node:12-alpine as webpack
 
-RUN mkdir /app
 WORKDIR /app
 
 ADD package.json /app/package.json

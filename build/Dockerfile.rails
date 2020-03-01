@@ -1,17 +1,18 @@
 # vim:set ft=dockerfile:
 
-FROM ruby:2.7.0 as rails-dev
+FROM ruby:2.7 as builder
+
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+
+FROM ruby:2.7-slim as rails-dev
 
 RUN apt-get update \
-	&& apt-get install -y locales \
+	&& apt-get install -y locales libpq5 \
 	&& echo 'ja_JP.UTF-8 UTF-8' >> /etc/locale.gen \
 	&& locale-gen \
 	&& update-locale LANG=ja_JP.UTF-8
 ENV LANG=ja_JP.UTF-8
 
-RUN mkdir /app
 WORKDIR /app
-
-ADD Gemfile /app/Gemfile
-ADD Gemfile.lock /app/Gemfile.lock
-RUN bundle install
+COPY --from=builder /usr/local/bundle /usr/local/bundle
