@@ -1,0 +1,16 @@
+env:
+  browser: true
+  es2020: true
+  node: false
+extends:
+  - 'plugin:@typescript-eslint/eslint-recommended'
+  - 'plugin:@typescript-eslint/recommended'
+  - 'prettier/@typescript-eslint'
+parser: '@typescript-eslint/parser'
+parserOptions:
+  sourceType: module
+plugins:
+  - '@typescript-eslint'
+rules:
+  '@typescript-eslint/ban-ts-ignore': off
+  '@typescript-eslint/explicit-function-return-type': off

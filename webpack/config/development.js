@@ -14,6 +14,16 @@ module.exports = merge(common, {
     publicPath: '//localhost:3035/packs/',
     filename: '[name].js',
   },
+  module: {
+    rules: [
+      {
+        enforce: 'pre',
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+      },
+    ],
+  },
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].css' }),
     new WebpackAssetsManifest({
