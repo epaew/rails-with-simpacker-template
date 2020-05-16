@@ -16,3 +16,6 @@ ENV LANG=ja_JP.UTF-8
 
 WORKDIR /app
 COPY --from=builder /usr/local/bundle /usr/local/bundle
+
+ENTRYPOINT ["bundle", "exec"]
+CMD ["rails", "server"]

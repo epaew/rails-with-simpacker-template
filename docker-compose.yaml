@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  rails:
+  web:
     build:
       context: .
       dockerfile: build/Dockerfile.rails
@@ -10,9 +10,11 @@ services:
     stdin_open: true
     ports:
       - "3000:3000"
-    command: bundle exec spring server
+    command: spring server
     volumes:
       - .:/app:cached
+    tmpfs:
+      - /app/tmp/pids
     depends_on:
       - db
       - webpack
@@ -23,10 +25,9 @@ services:
       target: webpack
     ports:
       - "3035:3035"
-    command: yarn run start
     volumes:
       - .:/app:cached
-      - node_modules:/app/node_modules
+      - /app/node_modules
   db:
     image: postgres:12
     environment:
@@ -35,7 +36,5 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
 volumes:
-  node_modules:
-    driver: local
   pg_data:
     driver: local
