@@ -1,30 +1,31 @@
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const WebpackAssetsManifest = require("webpack-assets-manifest");
-const entries = require("./entries.js");
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WebpackAssetsManifest = require('webpack-assets-manifest');
+
+const entries = require('./entries.js');
 
 module.exports = {
   entry: entries,
   output: {
-    path: path.resolve(__dirname, "../../public/packs"),
-    publicPath: "/packs/",
-    filename: "[name].js"
+    path: path.resolve(__dirname, '../../public/packs'),
+    publicPath: '/packs/',
+    filename: '[name].js',
   },
   optimization: {
     splitChunks: {
       cacheGroups: {
         vendor: {
           test: /node_modules/,
-          name: "vendor",
-          chunks: "all",
-          enforce: true
-        }
-      }
+          name: 'vendor',
+          chunks: 'all',
+          enforce: true,
+        },
+      },
     },
-    runtimeChunk: true
+    runtimeChunk: true,
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"]
+    extensions: ['.tsx', '.ts', '.js'],
   },
   module: {
     rules: [
@@ -33,33 +34,29 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
               presets: [
-                ["@babel/preset-env", { "useBuiltIns": "usage", "corejs": 3 }],
-                "@babel/preset-react",
-                "@babel/preset-typescript"
-              ]
-            }
-          }
-        ]
+                ['@babel/preset-env', { useBuiltIns: 'usage', corejs: 3 }],
+                '@babel/preset-react',
+                '@babel/preset-typescript',
+              ],
+            },
+          },
+        ],
       },
       {
         test: /\.(sc|sa|c)ss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "sass-loader"
-        ]
-      }
-    ]
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
+    ],
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: "[name].css" }),
+    new MiniCssExtractPlugin({ filename: '[name].css' }),
     new WebpackAssetsManifest({
       publicPath: true,
       entrypoints: true,
-      writeToDisk: true
-    })
-  ]
+      writeToDisk: true,
+    }),
+  ],
 };

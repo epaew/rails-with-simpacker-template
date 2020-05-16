@@ -1,15 +1,15 @@
 {
   "private": true,
   "scripts": {
-    "build:dev": "webpack --config config/webpack/development.js",
-    "build": "webpack --config config/webpack/production.js",
+    "build:dev": "webpack --config webpack/config/development.js",
+    "build": "webpack --config webpack/config/production.js",
     "clean": "rm -rf public/packs/*",
-    "start": "webpack-dev-server --config config/webpack/development.js",
+    "dev": "webpack-dev-server --config webpack/config/development.js",
     "test": "jest",
-    "eslint": "eslint -c .eslintrc.yml --ext .js,.jsx,.ts,.tsx app/javascript",
-    "eslint:fix": "eslint --fix -c .eslintrc.yml --ext .js,.jsx,.ts,.tsx app/javascript",
-    "stylelint": "stylelint --config .stylelintrc.yml \"app/javascript/**/*.{s,}css\"",
-    "stylelint:fix": "stylelint --fix --config .stylelintrc.yml \"app/javascript/**/*.{s,}css\""
+    "eslint": "eslint --ext .js,.jsx,.ts,.tsx webpack",
+    "eslint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx webpack",
+    "stylelint": "stylelint \"webpack/src/sass/**/*.{s,}css\"",
+    "stylelint:fix": "stylelint --fix \"webpack/src/sass/**/*.{s,}css\""
   },
   "dependencies": {
     "@rails/ujs": "^6.0.0",

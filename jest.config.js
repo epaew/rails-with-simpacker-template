@@ -1,8 +1,8 @@
 module.exports = {
   moduleNameMapper: {
-    '^#/(.+)': '<rootDir>/app/javascript/$1',
+    '^#/(.+)': '<rootDir>/webpack/src/$1',
   },
   preset: 'ts-jest',
   testEnvironment: 'node',
-  testMatch: ['<rootDir>/spec/javascript/**/*.test.ts'],
+  testMatch: ['<rootDir>/webpack/__tests__/**/*.[jt]s?(x)'],
 };
