@@ -22,7 +22,7 @@ module.exports = merge(common, {
   },
   plugins: [
     new StylelintWebpackPlugin({
-      configFile: path.resolve(__dirname, '../../.stylelintrc.yml'),
+      configFile: path.resolve(__dirname, '../../.stylelintrc.yaml'),
       context: path.resolve(__dirname, '../src/sass/'),
     }),
   ],
