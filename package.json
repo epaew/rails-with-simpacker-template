@@ -6,7 +6,9 @@
     "clean": "rm -rf public/packs/*",
     "dev": "webpack-dev-server --config webpack/config/development.js",
     "eslint": "eslint --ext .js,.jsx,.ts,.tsx webpack",
-    "eslint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx webpack"
+    "eslint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx webpack",
+    "stylelint": "stylelint \"webpack/src/sass/**/*.{s,}css\"",
+    "stylelint:fix": "stylelint --fix \"webpack/src/sass/**/*.{s,}css\""
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.33.0",
@@ -22,6 +24,10 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "prettier": "^2.0.5",
     "sass-loader": "^8.0.2",
+    "stylelint": "^13.3.3",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-scss": "^3.17.2",
+    "stylelint-webpack-plugin": "^2.0.0",
     "ts-loader": "^7.0.4",
     "typescript": "^3.9.2",
     "webpack": "^4.43.0",

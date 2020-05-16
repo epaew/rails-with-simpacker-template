@@ -2,6 +2,7 @@ const path = require('path');
 
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const StylelintWebpackPlugin = require('stylelint-webpack-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 
 const common = require('./common.js');
@@ -26,6 +27,9 @@ module.exports = merge(common, {
   },
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].css' }),
+    new StylelintWebpackPlugin({
+      context: path.resolve(__dirname, '../src/sass/'),
+    }),
     new WebpackAssetsManifest({
       publicPath: true,
       entrypoints: true,
