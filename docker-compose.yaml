@@ -17,6 +17,17 @@ services:
       - /app/tmp/pids
     depends_on:
       - db
+      - webpack
+  webpack:
+    build:
+      context: .
+      dockerfile: build/Dockerfile.webpack
+      target: webpack
+    ports:
+      - "3035:3035"
+    volumes:
+      - .:/app:cached
+      - /app/node_modules
   db:
     image: postgres:12
     environment:
