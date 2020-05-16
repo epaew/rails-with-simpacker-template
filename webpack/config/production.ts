@@ -1,14 +1,14 @@
-const path = require('path');
+import path from 'path';
 
-const merge = require('webpack-merge');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
-const WebpackAssetsManifest = require('webpack-assets-manifest');
+import merge from 'webpack-merge';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import OptimizeCssAssetsWebpackPlugin from 'optimize-css-assets-webpack-plugin';
+import TerserWebpackPlugin from 'terser-webpack-plugin';
+import WebpackAssetsManifest from 'webpack-assets-manifest';
 
-const common = require('./common.js');
+import { common } from './common';
 
-module.exports = merge(common, {
+export default merge(common, {
   mode: 'production',
   output: {
     path: path.resolve(__dirname, '../../public/packs'),

@@ -1,8 +1,9 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { Configuration } from 'webpack';
 
-const entries = require('./entries.js');
+import { entries } from './entries';
 
-module.exports = {
+export const common: Configuration = {
   entry: entries,
   optimization: {
     splitChunks: {
