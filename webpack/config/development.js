@@ -1,6 +1,7 @@
 const path = require('path');
 
 const merge = require('webpack-merge');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 
 const common = require('./common.js');
@@ -14,6 +15,7 @@ module.exports = merge(common, {
     filename: '[name].js',
   },
   plugins: [
+    new MiniCssExtractPlugin({ filename: '[name].css' }),
     new WebpackAssetsManifest({
       publicPath: true,
       entrypoints: true,

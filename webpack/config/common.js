@@ -1,3 +1,5 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const entries = require('./entries.js');
 
 module.exports = {
@@ -24,6 +26,10 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         loader: ['ts-loader'],
+      },
+      {
+        test: /\.(sc|sa|c)ss$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },
