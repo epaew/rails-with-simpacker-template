@@ -1,3 +1,17 @@
 env:
   browser: true
   node: false
+extends:
+  - 'plugin:jsx-a11y/recommended'
+  - 'plugin:react/recommended'
+  - 'plugin:react-hooks/recommended'
+settings:
+  react:
+    version: detect
+overrides:
+  - files:
+      - '*.tsx'
+    plugins:
+      - react
+    rules:
+      react/prop-types: off
