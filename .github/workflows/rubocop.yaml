@@ -14,14 +14,21 @@ jobs:
     name: Rubocop
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout codes
-      uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.7.1
+      - name: Checkout codes
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.1
 
-    - name: Run bundle install
-      run: gem install bundler && bundle install
-    - name: Run Rubocop
-      run: bundle exec rubocop
+      - name: Fetch bundler cache
+        uses: actions/cache@v1
+        with:
+          path: /usr/local/bundle
+          key: ${{ runner.os }}-bundler-${{ hashFiles('Gemfile.lock') }}
+          restore-keys: ${{ runner.os }}-bundler-
+
+      - name: Run bundle install
+        run: gem install bundler && bundle install
+      - name: Run Rubocop
+        run: bundle exec rubocop
