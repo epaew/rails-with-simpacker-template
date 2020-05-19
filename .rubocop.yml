@@ -7,6 +7,7 @@ AllCops:
   NewCops: enable
   TargetRubyVersion: 2.7
   Exclude:
+    - db/schema.rb
     - node_modules/**/*
     - vendor/**/*
 
@@ -26,6 +27,3 @@ Style/Documentation:
   Enabled: false
 Style/Lambda:
   EnforcedStyle: literal
-Style/StringLiterals:
-  Exclude:
-    - 'db/migrate/**/*'
