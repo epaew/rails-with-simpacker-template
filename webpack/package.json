@@ -1,14 +1,14 @@
 {
   "private": true,
   "scripts": {
-    "build:dev": "webpack --config webpack/config/development.ts",
-    "build": "webpack --config webpack/config/production.ts",
-    "clean": "rm -rf public/packs/*",
-    "dev": "webpack-dev-server --config webpack/config/development.ts",
-    "eslint": "eslint --ext .js,.jsx,.ts,.tsx webpack",
-    "eslint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx webpack",
-    "stylelint": "stylelint \"webpack/src/sass/**/*.{s,}css\"",
-    "stylelint:fix": "stylelint --fix \"webpack/src/sass/**/*.{s,}css\"",
+    "build:dev": "webpack --config config/development.ts",
+    "build": "webpack --config config/production.ts",
+    "clean": "rimraf ../rails/public/packs/*",
+    "dev": "webpack-dev-server --config config/development.ts",
+    "eslint": "eslint --ext .js,.jsx,.ts,.tsx config src",
+    "eslint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx config src",
+    "stylelint": "stylelint src/sass",
+    "stylelint:fix": "stylelint --fix src/sass",
     "test": "jest"
   },
   "devDependencies": {
@@ -35,6 +35,7 @@
     "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
     "sass-loader": "^8.0.2",
     "stylelint": "^13.5.0",
     "stylelint-config-recommended-scss": "^4.2.0",
