@@ -12,7 +12,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@types/jest": "^25.2.2",
+    "@types/jest": "^25.2.3",
     "@types/mini-css-extract-plugin": "^0.9.1",
     "@types/optimize-css-assets-webpack-plugin": "^5.0.1",
     "@types/stylelint-webpack-plugin": "^0.1.5",
