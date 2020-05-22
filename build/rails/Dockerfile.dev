@@ -1,6 +1,6 @@
 # vim:set ft=dockerfile:
 
-FROM ruby:2.7.1 as rails-dev
+FROM ruby:2.7.1 as rails
 
 RUN apt-get update \
 	&& apt-get install -y locales \

@@ -3,16 +3,16 @@ version: '3.7'
 services:
   web:
     build:
-      context: .
-      dockerfile: build/Dockerfile.rails
-      target: rails-dev
+      context: ./rails
+      dockerfile: ../build/rails/Dockerfile.dev
+      target: rails
     tty: true
     stdin_open: true
     ports:
       - "3000:3000"
     command: bundle exec spring server
     volumes:
-      - .:/app:cached
+      - ./rails:/app:cached
     tmpfs:
       - /app/tmp/pids
     depends_on:
@@ -20,14 +20,15 @@ services:
       - webpack
   webpack:
     build:
-      context: .
-      dockerfile: build/Dockerfile.webpack
+      context: ./webpack
+      dockerfile: ../build/webpack/Dockerfile.dev
       target: webpack
     ports:
       - "3035:3035"
     volumes:
-      - .:/app:cached
-      - /app/node_modules
+      - ./rails/public/packs:/app/rails/public/packs:cached
+      - ./webpack:/app/webpack:cached
+      - /app/webpack/node_modules
   db:
     image: postgres:12
     environment:
