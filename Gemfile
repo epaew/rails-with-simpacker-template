@@ -9,7 +9,7 @@ ruby '2.7.1'
 gem 'bootsnap', '>= 1.4.2', require: false
 # gem 'image_processing', '~> 1.2' Use Active Storage variant
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 gem 'rails', '~> 6.0'
 gem 'rails-i18n'
 # gem 'redis', '~> 4.0'
