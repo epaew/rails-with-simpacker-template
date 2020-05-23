@@ -1,4 +1,9 @@
+import Rails from '@rails/ujs';
+
 import { hello } from '../components/greeter';
 import '../sass/application.scss';
 
-console.log(hello('Simpacker'));
+window.addEventListener('DOMContentLoaded', () => {
+  Rails.start();
+  console.log(hello('Simpacker'));
+});
