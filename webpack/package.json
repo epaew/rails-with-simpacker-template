@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "build:dev": "webpack --config config/development.ts",
     "build": "webpack --config config/production.ts",
+    "build:dev": "webpack --config config/development.ts",
     "clean": "rimraf ../rails/public/packs/*",
     "dev": "webpack-dev-server --config config/development.ts",
     "eslint": "eslint --ext .js,.jsx,.ts,.tsx config src",
@@ -10,6 +10,9 @@
     "stylelint": "stylelint src/sass",
     "stylelint:fix": "stylelint --fix src/sass",
     "test": "jest"
+  },
+  "dependencies": {
+    "@rails/ujs": "^6.0.3-1"
   },
   "devDependencies": {
     "@types/jest": "^25.2.3",
