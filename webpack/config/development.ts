@@ -11,7 +11,7 @@ export default merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   output: {
-    path: path.resolve(__dirname, '../../public/packs'),
+    path: path.resolve(__dirname, '../../rails/public/packs'),
     publicPath: '//localhost:3035/packs/',
     filename: '[name].js',
   },

@@ -11,7 +11,7 @@ import { common } from './common';
 export default merge(common, {
   mode: 'production',
   output: {
-    path: path.resolve(__dirname, '../../public/packs'),
+    path: path.resolve(__dirname, '../../rails/public/packs'),
     publicPath: '/packs/',
     filename: '[name]-[hash].js',
   },

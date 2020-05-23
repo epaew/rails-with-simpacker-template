@@ -25,7 +25,6 @@
 
 # Simpacker
 /public/packs
-/node_modules
 
 # SimpleCov
 /coverage

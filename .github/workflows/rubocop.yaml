@@ -3,7 +3,7 @@ name: Run Rubocop
 on:
   pull_request:
     paths:
-      - '**.rb'
+      - 'rails/**/*.rb'
   push:
     branches:
       - master
@@ -13,6 +13,9 @@ jobs:
   rubocop:
     name: Rubocop
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rails
     steps:
       - name: Checkout codes
         uses: actions/checkout@v2

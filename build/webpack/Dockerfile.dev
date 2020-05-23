@@ -2,7 +2,7 @@
 
 FROM node:12-alpine as webpack
 
-WORKDIR /app
+WORKDIR /app/webpack
 
 COPY package.json yarn.lock ./
 RUN yarn install
