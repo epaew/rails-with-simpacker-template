@@ -3,7 +3,7 @@ import { sync } from 'glob';
 
 import { Entry } from 'webpack';
 
-const RE_EXT_NAME = new RegExp('.tsx?$');
+const RE_EXT_NAME = new RegExp('.ts$');
 const packsPath = path.resolve(__dirname, '../src/packs');
 const entries: Entry = {};
 

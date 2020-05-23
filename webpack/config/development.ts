@@ -19,7 +19,7 @@ export default merge(common, {
     rules: [
       {
         enforce: 'pre',
-        test: /\.tsx?$/,
+        test: /\.ts$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
       },
