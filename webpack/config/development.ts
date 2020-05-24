@@ -19,7 +19,7 @@ export default merge(common, {
     rules: [
       {
         enforce: 'pre',
-        test: /\.ts$/,
+        test: /\.(js|ts|vue)$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
       },
@@ -28,7 +28,8 @@ export default merge(common, {
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].css' }),
     new StylelintWebpackPlugin({
-      context: path.resolve(__dirname, '../src/sass/'),
+      context: path.resolve(__dirname, '../src/'),
+      files: '**/*.(css|sass|scss|vue)',
     }),
     new WebpackAssetsManifest({
       publicPath: true,
