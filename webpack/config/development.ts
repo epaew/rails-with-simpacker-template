@@ -12,7 +12,7 @@ export default merge(common, {
   devtool: 'inline-source-map',
   output: {
     path: path.resolve(__dirname, '../../rails/public/packs'),
-    publicPath: '//localhost:3035/packs/',
+    publicPath: '/packs/',
     filename: '[name].js',
   },
   module: {
@@ -37,11 +37,10 @@ export default merge(common, {
     }),
   ],
   devServer: {
+    disableHostCheck: true,
+    hot: true,
     host: '0.0.0.0',
     port: 3035,
-    hot: true,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
+    public: '0.0.0.0',
   },
 });
