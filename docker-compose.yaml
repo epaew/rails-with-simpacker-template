@@ -6,25 +6,21 @@ services:
       context: ./rails
       dockerfile: ../build/rails/Dockerfile.dev
       target: rails
-    tty: true
-    stdin_open: true
-    ports:
-      - "3000:3000"
     command: bundle exec spring server
-    volumes:
-      - ./rails:/app:cached
-    tmpfs:
-      - /app/tmp/pids
     depends_on:
       - db
       - webpack
+    stdin_open: true
+    tty: true
+    tmpfs:
+      - /app/tmp/pids
+    volumes:
+      - ./rails:/app:cached
   webpack:
     build:
       context: ./webpack
       dockerfile: ../build/webpack/Dockerfile.dev
       target: webpack
-    ports:
-      - "3035:3035"
     volumes:
       - ./rails/public/packs:/app/rails/public/packs:cached
       - ./webpack:/app/webpack:cached
