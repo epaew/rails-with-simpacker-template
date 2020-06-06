@@ -1,9 +1,7 @@
 name: Check code of /rails
 
 on:
-  pull_request:
-    paths:
-      - rails/**
+  pull_request: {}
   push:
     branches:
       - master
@@ -28,10 +26,95 @@ jobs:
         uses: actions/cache@v1
         with:
           path: /usr/local/bundle
-          key: ${{ runner.os }}-bundler-${{ hashFiles('Gemfile.lock') }}
+          key: ${{ runner.os }}-bundler-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: ${{ runner.os }}-bundler-
 
       - name: Run bundle install
         run: gem install bundler && bundle install
       - name: Run Rubocop
         run: bundle exec rubocop
+
+  webpack-build:
+    name: webpack build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: webpack
+    steps:
+      - name: Checkout codes
+        uses: actions/checkout@v2
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Fetch yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Fetch yarn cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
+
+      - name: Run yarn install
+        run: yarn install --frozen-lockfile
+      - name: Run yarn build
+        run: yarn build
+      - name: Upload result of webpack build
+        uses: actions/upload-artifact@v2
+        with:
+          name: packs
+          path: rails/public/packs
+
+  rspec:
+    name: RSpec Rails
+    runs-on: ubuntu-latest
+    needs:
+      - webpack-build
+    services:
+      postgres:
+        image: postgres:12
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    env:
+      DATABASE_URL: postgres://postgres:password@localhost/test_database
+      RAILS_ENV: test
+    defaults:
+      run:
+        working-directory: rails
+    steps:
+      - name: Checkout codes
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.1
+      - name: Download result of webpack build
+        uses: actions/download-artifact@v2
+        with:
+          name: packs
+          path: rails/public/packs
+
+      - name: Fetch bundler cache
+        uses: actions/cache@v1
+        with:
+          path: /usr/local/bundle
+          key: ${{ runner.os }}-bundler-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: ${{ runner.os }}-bundler-
+
+      - name: Run bundle install
+        run: gem install bundler && bundle install
+      - name: Create and migrate database
+        run: bundle exec rails db:create db:migrate
+      - name: Run RSpec Rails
+        run: bundle exec rspec
