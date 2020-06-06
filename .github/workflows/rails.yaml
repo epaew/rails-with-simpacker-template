@@ -35,3 +35,47 @@ jobs:
         run: gem install bundler && bundle install
       - name: Run Rubocop
         run: bundle exec rubocop
+
+  rspec:
+    name: RSpec Rails
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:12
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    env:
+      DATABASE_URL: postgres://postgres:password@localhost/test_database
+      RAILS_ENV: test
+    defaults:
+      run:
+        working-directory: rails
+    steps:
+      - name: Checkout codes
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.1
+
+      - name: Fetch bundler cache
+        uses: actions/cache@v1
+        with:
+          path: /usr/local/bundle
+          key: ${{ runner.os }}-bundler-${{ hashFiles('Gemfile.lock') }}
+          restore-keys: ${{ runner.os }}-bundler-
+
+      - name: Run bundle install
+        run: gem install bundler && bundle install
+      - name: Create and migrate database
+        run: bundle exec rails db:create db:migrate
+      - name: Run RSpec Rails
+        run: bundle exec rspec
