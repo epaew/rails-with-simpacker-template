@@ -9,7 +9,8 @@
     "eslint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx config src",
     "stylelint": "stylelint src/sass",
     "stylelint:fix": "stylelint --fix src/sass",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@rails/ujs": "^6.0.3-1"

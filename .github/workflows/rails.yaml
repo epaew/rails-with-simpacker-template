@@ -1,10 +1,9 @@
-name: Run Rubocop
+name: Check code of /rails
 
 on:
   pull_request:
     paths:
-      - 'rails/Gemfile.lock'
-      - 'rails/**/*.rb'
+      - rails/**
   push:
     branches:
       - master
