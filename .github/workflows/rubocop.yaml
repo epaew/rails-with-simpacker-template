@@ -3,6 +3,7 @@ name: Run Rubocop
 on:
   pull_request:
     paths:
+      - 'rails/Gemfile.lock'
       - 'rails/**/*.rb'
   push:
     branches:

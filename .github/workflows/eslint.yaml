@@ -3,6 +3,7 @@ name: Run ESLint
 on:
   pull_request:
     paths:
+      - webpack/yarn.lock
       - webpack/**/*.tsx?
       - webpack/**/*.vue
   push:
