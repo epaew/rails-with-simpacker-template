@@ -1,7 +1,17 @@
 version: '3.7'
 
 services:
-  web:
+  nginx:
+    build:
+      context: ./build/nginx
+      dockerfile: Dockerfile.dev
+      target: nginx
+    depends_on:
+      - rails
+      - webpack
+    ports:
+      - 8080:8080
+  rails:
     build:
       context: ./rails
       dockerfile: ../build/rails/Dockerfile.dev
@@ -9,15 +19,10 @@ services:
     command: bundle exec spring server
     depends_on:
       - db
-      - webpack
-    environment:
-      WEBPACK_DEV_SERVER_HOST: http://webpack:3035/
-    ports:
-      - 3000:3000
     stdin_open: true
+    tty: true
     tmpfs:
       - /app/tmp/pids
-    tty: true
     volumes:
       - ./rails:/app:cached
   webpack:
