@@ -1,4 +1,5 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { VueLoaderPlugin } from 'vue-loader';
 import { Configuration } from 'webpack';
 
 import { entries } from './entries';
@@ -19,19 +20,34 @@ export const common: Configuration = {
     runtimeChunk: true,
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      vue$: 'vue/dist/vue.esm.js',
+    },
+    extensions: ['.vue', '.ts', '.js'],
   },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      },
+      {
+        test: /\.ts$/,
         exclude: /node_modules/,
-        loader: ['ts-loader'],
+        loader: 'ts-loader',
+        options: {
+          appendTsSuffixTo: [/\.vue/],
+        },
+      },
+      {
+        test: /\.pug$/,
+        loader: 'pug-plain-loader',
       },
       {
         test: /\.(sc|sa|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        loader: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },
+  plugins: [new VueLoaderPlugin()],
 };
