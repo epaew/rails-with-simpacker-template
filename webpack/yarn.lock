@@ -759,10 +759,10 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
   integrity sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
 
-"@types/stylelint-webpack-plugin@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@types/stylelint-webpack-plugin/-/stylelint-webpack-plugin-2.0.0.tgz#70790f2442041a8941627199e9dd09fac58c136a"
-  integrity sha512-kOS5iEbPjHtotY2UCPlFNXEkWnjTM5Um2Tj7l/0YEswpyf66vcAm/dpG8dDhj16aPPi4aRXAIiYt0eVUPU/+Zg==
+"@types/stylelint-webpack-plugin@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@types/stylelint-webpack-plugin/-/stylelint-webpack-plugin-2.0.1.tgz#3f3ef68b0b33d3928edfb019285852204455ff99"
+  integrity sha512-DSJUqy2RU0QROdY+bqXJ7KziGi5n+iui15DTbKbme+DrNMTQZuG/dGVyFrvUfQ1VDpwMIsemFuQB3fNtQzaDyg==
   dependencies:
     "@types/stylelint" "*"
     "@types/webpack" "*"
