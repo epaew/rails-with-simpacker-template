@@ -20,7 +20,7 @@
     "@types/optimize-css-assets-webpack-plugin": "^5.0.1",
     "@types/stylelint-webpack-plugin": "^2.0.1",
     "@types/terser-webpack-plugin": "^3.0.0",
-    "@types/webpack": "^4.41.17",
+    "@types/webpack": "^4.41.18",
     "@types/webpack-assets-manifest": "^3.0.1",
     "@types/webpack-dev-server": "^3.11.0",
     "@types/webpack-merge": "^4.1.5",
